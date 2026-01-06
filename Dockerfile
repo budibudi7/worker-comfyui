@@ -96,7 +96,7 @@ FROM base AS downloader
 
 ARG HUGGINGFACE_ACCESS_TOKEN
 # Set default model type if none is provided
-ARG MODEL_TYPE=flux1-dev-fp8
+ARG MODEL_TYPE=illustrious-unholy
 
 # Change working directory to ComfyUI
 WORKDIR /comfyui
@@ -129,8 +129,8 @@ RUN if [ "$MODEL_TYPE" = "flux1-dev" ]; then \
       wget -q --header="Authorization: Bearer ${HUGGINGFACE_ACCESS_TOKEN}" -O models/vae/ae.safetensors https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/ae.safetensors; \
     fi
 
-RUN if [ "$MODEL_TYPE" = "flux1-dev-fp8" ]; then \
-      wget -q -O models/checkpoints/flux1-dev-fp8.safetensors https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors; \
+RUN if [ "$MODEL_TYPE" = "illustrious-unholy" ]; then \
+      wget -q -O models/checkpoints/illustrious-unholy-nswf.safetensors https://civitai.com/api/download/models/2403075?type=Model&format=SafeTensor&size=pruned&fp=fp16&token=6c763551a51643ee44beca122679f67a; \
     fi
 
 RUN if [ "$MODEL_TYPE" = "z-image-turbo" ]; then \
